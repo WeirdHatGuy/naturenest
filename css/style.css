@@ -1,0 +1,284 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Link Styles (About, Products, Contact) */
+.nav-link-special {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.nav-link-special:hover {
+    color: #fff;
+}
+
+/* Ensure the navbar container is a flex container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+/* Make the navbar-nav a flex container as well */
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Apply margin-left: auto; to the navbar-nav with ml-auto class */
+.navbar-nav.ml-auto {
+    margin-left: auto;
+}
+
+/* Optional: Add some spacing between navbar items */
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+/* Optional: Style the navbar links */
+.navbar-nav .nav-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ddd;
+}
+
+.navbar-brand {
+    content: "NatureNest";
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+nav ul {
+    background-color: #333;
+    list-style-type: none;
+    margin:  0;
+    padding:  0;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding:  14px  16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Hero Section Styles */
+#home-section {
+    background-color: #f4f4f4;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.hero .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hero .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Services Section Styles */
+.ftco-services {
+    padding: 50px 0;
+}
+
+.services .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.services .icon span {
+    font-size: 24px;
+    color: #fff;
+}
+
+.services .heading {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.services .span {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-card {
+    display: flex; /* Arrange elements side-by-side */
+    width: 300px; /* Adjust width as needed */
+    background-color: #fff; /* Set background color */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    margin: 10px; /* Add some margin for spacing */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .product-image {
+    flex: 1; /* Make image occupy half of the space */
+    padding: 10px; /* Add padding around the image */
+  }
+  
+  .product-image img {
+    max-width: 100%; /* Ensure image fits within container */
+    height: auto; /* Maintain image aspect ratio */
+  }
+  
+  .product-info {
+    flex: 1; /* Make product info occupy half of the space */
+    padding: 10px; /* Add padding around the content */
+  }
+  
+  .product-title {
+    font-weight: bold; /* Make title bold */
+    margin-bottom: 5px; /* Add some space below the title */
+  }
+  
+  .product-price {
+    color: #38b000; /* Set price color */
+    margin-bottom: 10px; /* Add some space below the price */
+  }
+  .img-prod img {
+    max-width: 200px; /* Adjust the value as needed */
+    height: auto; /* Maintain image aspect ratio */
+  }
+  .add-to-cart {
+    background-color: #38b000; /* Set button background color */
+    color: #fff; /* Set button text color */
+    padding: 10px 15px; /* Add padding to the button */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add rounded corners to the button */
+    cursor: pointer; /* Indicate clickable behavior */
+  }
+  
+  .add-to-cart:hover {
+    background-color: #2e8b00; /* Change button color on hover */
+  }
+  
+/* Footer Styles */
+.ftco-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.ftco-footer h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.ftco-footer p {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.ftco-footer-social li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.ftco-footer-social li a {
+    color: #fff;
+    font-size: 24px;
+}
+
+.ftco-footer-social li a:hover {
+    color: #ddd;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #38b000;
+    border-color: #38b000;
+}
+
+.btn-primary:hover {
+    background-color: #2e8b00;
+    border-color: #2e8b00;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    transition: transform .2s; /* Add transition for smoother scaling */
+}
+.slider-items {
+    position: relative;
+    overflow: hidden;
+    background-image: url(images/bg_1.jpg); /* Assuming image is in the same folder */
+    background-size: cover; /* Stretch image to fill container */
+    background-position: center; /* Center the image */
+  }
+  
+  
+  .slider-items img {
+    display: block; /* Makes the image behave like a block element (full width on a new line) */
+    width: 100%; /* Ensures image fills the container width */
+    height: auto; /* Maintains image aspect ratio */
+  }
+  
