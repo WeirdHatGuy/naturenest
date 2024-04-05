@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 <?php
+=======
+<?php 
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
 
 require_once 'header.php';
 
 // Check if the file name is not index.php
+<<<<<<< HEAD
 if (basename($_SERVER['PHP_SELF']) != 'about.php') {
+=======
+if(basename($_SERVER['PHP_SELF']) != 'about.php') {
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
     // Redirect to login.php if session variables are not set
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
         header("Location: auth.php");
@@ -14,7 +22,10 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
 <head>
     <title>NatureNest - Organic Delights</title>
     <meta charset="utf-8">
@@ -22,17 +33,25 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">NatureNest</a>
+<<<<<<< HEAD
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+=======
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
                     <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link-special" href="product-single.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link-special" href="cart.html">Cart</a></li>
@@ -40,6 +59,18 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                     <li class="nav-item"><a class="nav-link-special" href="about.html">About</a></li>
                 </ul>
             </div>
+=======
+                  <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                </ul>
+              </div>
+              
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
         </div>
     </nav>
     <section id="home-section" class="hero">
@@ -70,7 +101,11 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Free Shipping</h3>
                             <span>On orders over $100</span>
                         </div>
+<<<<<<< HEAD
                     </div>
+=======
+                    </div>      
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -81,7 +116,11 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Always Fresh</h3>
                             <span>Product well packaged</span>
                         </div>
+<<<<<<< HEAD
                     </div>
+=======
+                    </div>    
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -92,7 +131,11 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Superior Quality</h3>
                             <span>Quality Products</span>
                         </div>
+<<<<<<< HEAD
                     </div>
+=======
+                    </div>      
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
                 </div>
             </div>
         </div>
@@ -105,7 +148,11 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                     <h2 class="mb-4">Our Organic Selection</h2>
                     <p>Explore our curated selection of fresh, organic products.</p>
                 </div>
+<<<<<<< HEAD
             </div>
+=======
+            </div>   		
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
             <div class="row">
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
@@ -180,7 +227,11 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
         </div>
     </section>
     <footer class="ftco-footer ftco-section">
@@ -210,20 +261,35 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
+<<<<<<< HEAD
                     <p>Copyright &copy;
                         <script>document.write(new Date().getFullYear());</script> All rights reserved <i
                             class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a>
                     </p>
+=======
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
                 </div>
             </div>
         </div>
     </footer>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+<<<<<<< HEAD
 
 </body>
 
 </html>
+=======
+    
+</body>
+</html>
+
+>>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
