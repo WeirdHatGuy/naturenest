@@ -25,7 +25,7 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.php">NatureNest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

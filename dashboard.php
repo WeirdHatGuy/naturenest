@@ -31,6 +31,7 @@ $countries = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NatureNest</title>
     <meta charset="utf-8">

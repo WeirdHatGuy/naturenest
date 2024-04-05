@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once 'header.php';
 
@@ -53,6 +53,7 @@ if (isset($_POST["add_to_cart"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,6 +67,7 @@ if (isset($_POST["add_to_cart"])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">NatureNest</a>
@@ -94,8 +96,8 @@ if (isset($_POST["add_to_cart"])) {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        // Fetch the result using fetchAll()
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // Fetch the result using fetchAll()
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($products as $product) {
             $productName = $product['name'];
@@ -104,7 +106,7 @@ if (isset($_POST["add_to_cart"])) {
             $productImage = $product['product_image'];
             $description = $product['description'];
 
-            echo '<div class="col-md-6 col-lg-3 ftco-animate padding-15">
+                echo '<div class="col-md-6 col-lg-3 ftco-animate padding-15">
                     <div class="product card">
                     <img src="'. $productImage. '" class="card-img-top" alt="'. $productName. '">
                         <div class="card-body text-center">
@@ -122,10 +124,10 @@ if (isset($_POST["add_to_cart"])) {
                         </div>
                     </div>
                 </div>';
-        }
-        ?>
+            }
+            ?>
+        </div>
     </div>
-</div>
 
 <footer class="ftco-footer ftco-section">
         <div class="container">
@@ -159,4 +161,5 @@ if (isset($_POST["add_to_cart"])) {
 			</div>
 			</footer>
 </body>
+
 </html>

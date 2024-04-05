@@ -24,7 +24,7 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.php">NatureNest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,8 +41,7 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
                   <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
                   <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
-              </div>
-              
+            </div>
         </div>
     </nav>
 
