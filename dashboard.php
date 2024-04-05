@@ -31,26 +31,17 @@ $countries = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-=======
->>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
 <head>
     <title>NatureNest</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
         rel="stylesheet">
-=======
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
->>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<<<<<<< HEAD
 
 <body>
 
@@ -151,99 +142,3 @@ $countries = $stmt->fetchAll();
 </body>
 
 </html>
-=======
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">NatureNest</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-                <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
-    <h1>Profile Information</h1>
-    <?php if (is_array($user)): ?>
-        <p>Email: <?php echo $user['email']; ?></p>
-        <p>Phone: <?php echo $user['phone']; ?></p>
-    <?php else: ?>
-        <p>User information could not be retrieved.</p>
-    <?php endif; ?>
-    <a href="update_profile.php" class="btn btn-primary">Update Profile</a>
-</div>
-
-
-<div class="container">
-    <h1>Manage Addresses</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Add Address</h2>
-            <form action="add_address.php" method="post">
-            <div class="form-group">
-                    <label for="unit_number">Unit Number</label>
-                    <input type="text" class="form-control" id="unit_number" name="unit_number">
-                </div>
-                <div class="form-group">
-                    <label for="street_number">Street Number</label>
-                    <input type="text" class="form-control" id="street_number" name="street_number">
-                </div>
-                <div class="form-group">
-                    <label for="address_line1">Address Line 1</label>
-                    <input type="text" class="form-control" id="address_line1" name="address_line1" required>
-                </div>
-                <div class="form-group">
-                    <label for="address_line2">Address Line 2 (optional)</label>
-                    <input type="text" class="form-control" id="address_line2" name="address_line2">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="city" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="region">Region</label>
-                        <input type="text" class="form-control" id="region" name="region" required>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="postal_code">Postal Code</label>
-                        <input type="text" class="form-control" id="postal_code" name="postal_code" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <select id="country" class="form-control" name="country" required>
-                        <?php foreach ($countries as $country): ?>
-                            <option value="<?php echo $country['id']; ?>">
-                                <?php echo $country['country_name']; ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <h2>Existing Addresses</h2>
-            <?php include 'existing_addresses.php'; ?>
-        </div>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
->>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
