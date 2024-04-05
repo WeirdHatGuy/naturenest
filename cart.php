@@ -23,7 +23,8 @@
             <li class="nav-item"><a class="nav-link-special" id="product-link" href="product.php">Products</a></li>
             <li class="nav-item"><a class="nav-link-special cart-link">Cart</a></li>
             <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
             <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
         </ul>
     </div>

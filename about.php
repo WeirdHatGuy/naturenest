@@ -32,10 +32,11 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
                   <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
                 </ul>
               </div>

@@ -1,3 +1,16 @@
+<?php 
+
+require_once 'header.php';
+
+// Check if the file name is not index.php
+if(basename($_SERVER['PHP_SELF']) != 'product.php') {
+    // Redirect to login.php if session variables are not set
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
+        header("Location: auth.php");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +31,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-            <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-            <li class="nav-item"><a class="nav-link-special" id="product-link" href="product.php">Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-            <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
-            <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+        <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
+                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
         </ul>
     </div>
 </nav>
