@@ -142,7 +142,7 @@ if (basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <p class="card-text">$120.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="products.php" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
