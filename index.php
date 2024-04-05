@@ -39,6 +39,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
                   <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
                 </ul>
               </div>
