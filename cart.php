@@ -54,12 +54,21 @@
         </table>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script> NatureNest
-            </span>
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved <i class="fas fa-heart"></i> by
+              <a href="#" target="_blank">NatureNest</a>
+            </p>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script>
