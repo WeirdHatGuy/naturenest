@@ -43,6 +43,27 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
         if (password_verify($_POST['password'], $result['password'])) {
             session_start();
             $_SESSION['user_id'] = $result['id'];
+
+            // Check if the user already has a cart
+            $userId = $_SESSION['user_id'];
+            $sql = "SELECT id FROM shopping_cart WHERE user_id = :user_id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':user_id', $userId);
+            $stmt->execute();
+            $cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($cart) {
+                // If the user already has a cart, use its ID
+                $_SESSION['cart_id'] = $cart['id'];
+            } else {
+                // If the user doesn't have a cart, create a new one
+                $sql = "INSERT INTO shopping_cart (user_id) VALUES (:user_id)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':user_id', $userId);
+                $stmt->execute();
+                $_SESSION['cart_id'] = $conn->lastInsertId();
+            }
+
             header('Location: index.php');
         } else {
             echo "Invalid email or password";
@@ -52,6 +73,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>

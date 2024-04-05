@@ -26,7 +26,7 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">NatureNest</a>
+            <a class="navbar-brand" href="index.php">NatureNest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,10 +36,10 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
                   <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
                   <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
               </div>
               
@@ -49,43 +49,39 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
     <div class="container">
         <h1 class="text-center mt-5">User Reviews</h1>
 
-        <?php
-        // Connect to the database
-        require_once 'db_connect.php';
-
+    <?php
         // Get the user ID from the session variable
         $user_id = $_SESSION['user_id'];
 
-        // Get the user's reviews from the database
-        $query = "SELECT r.id, r.rating_value, r.comment, p.name AS product_name, o.order_date
-          FROM user_review r
-          JOIN order_line ol ON r.ordered_product_id = ol.id
-          JOIN product_item pi ON ol.product_item_id = pi.id
-          JOIN product p ON pi.product_id = p.id
-          JOIN shop_order o ON ol.order_id = o.id
-          WHERE r.user_id = ?
-          ORDER BY o.order_date DESC";
+        // SQL query to fetch user reviews
+        $query = "SELECT r.id, r.rating_value, r.comment, p.name AS product_name
+        FROM user_review r
+        JOIN order_line ol ON r.ordered_product_id = ol.id
+        JOIN product_item pi ON ol.product_item_id = pi.id
+        JOIN product p ON pi.product_id = p.id
+        WHERE r.user_id = ?
+        ORDER BY r.id DESC";
 
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $userId);
+        $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
         $stmt->execute();
 
-        $stmt->bind_result($id, $rating_value, $comment, $product_name, $order_date);
-        // Display the user's reviews
-        while ($row = $stmt->fetch()) {
-            echo '<div class="card mb-3">';
-            echo '<div class="card-body">';
-            echo '<h5 class="card-title">'. $row['product_name']. '</h5>';
-            echo '<p class="card-text">'. $row['comment']. '</p>';
-            echo '<p class'. ($row['rating_value'] == 5? ' text-success' : ''). '">'. $row['rating_value']. ' stars</p>';
-            echo '<p class="card-text"><small class="text-muted">'. $row['order_date']. '</small></p>';
-            echo '</div>';
-            echo '</div>';
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>Order id: " . htmlspecialchars($row['id']) . "</td><br>";
+            echo "<td>Rating: " . htmlspecialchars($row['rating_value']) . "</td><br>";
+            echo "<td>Comment: " . htmlspecialchars($row['comment']) . "</td><br>";
+            echo "<td>Product: " . htmlspecialchars($row['product_name']) . "</td><br>";
+            echo "</tr>";
         }
 
         // Close the database connection
         $conn = null;
-       ?>
+    ?>
+
+
+
+
 
     </div>
     <div class="container mt-5">
@@ -110,6 +106,37 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
             <button type="submit" class="btn btn-primary">Submit Review</button>
         </form>
     </div>
+    <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">NatureNest</h2>
+                        <p>Whether you're looking for a fresh, organic salad or a juicy, ripe fruit, NatureNest has got you covered. Our range of products is constantly expanding, thanks to our innovative farming techniques and our dedication to quality.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Menu</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="product.php" class="py-2 d-block">Shop</a></li>
+                            <li><a href="about.php" class="py-2 d-block">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-12 text-center">
+					<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
+				</div>
+			</div>
+			</div>
+			</footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="js/main.js"></script>

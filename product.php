@@ -3,13 +3,53 @@
 require_once 'header.php';
 
 // Check if the file name is not index.php
-if(basename($_SERVER['PHP_SELF']) != 'product.php') {
+if(basename($_SERVER['PHP_SELF'])!= 'product.php') {
     // Redirect to login.php if session variables are not set
-    if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
+    if (!isset($_SESSION['user_id']) ||!isset($_SESSION['user_name'])) {
         header("Location: auth.php");
         exit();
     }
 }
+// Assuming $conn is your PDO connection
+
+// Check if a shopping cart exists for the current user
+$sql = "SELECT id FROM shopping_cart WHERE user_id = :user_id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':user_id', $_SESSION['user_id']);
+$stmt->execute();
+$cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// If no cart exists, create one
+if (!$cart) {
+    $sql = "INSERT INTO shopping_cart (user_id) VALUES (:user_id)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $_SESSION['user_id']);
+    $stmt->execute();
+    $cartId = $conn->lastInsertId(); // Get the ID of the newly inserted cart
+} else {
+    $cartId = $cart['id']; // Use the existing cart ID
+}
+
+if (isset($_POST["add_to_cart"])) { 
+    // Get the product item ID from the form 
+    $product_item_id = $_POST["product_id"]; 
+    
+    // Get the product quantity from the form 
+    $product_quantity = $_POST["quantity"]; 
+
+    // Insert the item into the shopping cart item table
+    $sql = "INSERT INTO shopping_cart_item (cart_id, product_item_id, qty) VALUES (:cart_id, :product_item_id, :qty)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':cart_id', $cartId);
+    $stmt->bindParam(':product_item_id', $product_item_id);
+    $stmt->bindParam(':qty', $product_quantity);
+    $stmt->execute();
+
+    // Redirect to the cart page
+    header("Location: cart.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +58,9 @@ if(basename($_SERVER['PHP_SELF']) != 'product.php') {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>NatureNest</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -35,10 +78,10 @@ if(basename($_SERVER['PHP_SELF']) != 'product.php') {
                   <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
                   <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -47,15 +90,7 @@ if(basename($_SERVER['PHP_SELF']) != 'product.php') {
     <h1>Products</h1>
     <div class="row">
         <?php
-        require_once 'config.php';
-
-        if (isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-
-            $productNames = array_column($cart, 'productName');
-        }
-
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT p.id, p.category_id, p.name, p.description, p.product_image, pi.qty_in_stock, pi.price FROM product p JOIN product_item pi ON p.id = pi.product_id";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
@@ -65,20 +100,25 @@ if(basename($_SERVER['PHP_SELF']) != 'product.php') {
         foreach ($products as $product) {
             $productName = $product['name'];
             $price = $product['price'];
-
-            $addToCartBtn = '<button class="btn btn-primary add-to-cart" data-product_id="' . $product['product_id'] . '" data-product-name="' . $product['name'] . '" data-price="' . $product['price'] .'">Add to Cart</button>';
-            // Check if the product is already in the cart
-            if (isset($productNames) && in_array($productName, $productNames)) {
-                $addToCartBtn = '<button class="btn btn-primary added-to-cart" data-product_id="' . $product['product_id'] . '" data-product-name="' . $product['name'] . '" data-price="' . $product['price'] .'">Added to Cart</button>';
-            }
+            $qtyInStock = $product['qty_in_stock'];
+            $productImage = $product['product_image'];
+            $description = $product['description'];
 
             echo '<div class="col-md-6 col-lg-3 ftco-animate padding-15">
                     <div class="product card">
-                    <img src="images/product-' . $product['product_id'] . '.jpg" class="card-img-top" alt="' . $productName . '">
+                    <img src="'. $productImage. '" class="card-img-top" alt="'. $productName. '">
                         <div class="card-body text-center">
-                            <h5 class="card-title">' . $productName . '</h5>
-                            <p class="card-text">$' . $price . '</p>
-                            ' . $addToCartBtn . '
+                            <h5 class="card-title">'. $productName. '</h5>
+                            <p class="card-text">'. $description. '</p>
+                            <p class="card-text">₹'. $price. '</p>
+                            <p class="card-text">Qty in Stock: '. $qtyInStock. '</p>
+                            <!-- Add to Cart Form -->
+                            <form method="post" action="product.php">
+                            <input type="hidden" name="product_id" value="' . $product['id'] . '">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" name="quantity" id="quantity" value="" min="0" max="', $product['qty_in_stock'], '">
+                            <button type="submit" class="add-to-cart-button" name="add_to_cart" data-product-id="<?php echo $product["id"];">Add to Cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>';
@@ -87,104 +127,36 @@ if(basename($_SERVER['PHP_SELF']) != 'product.php') {
     </div>
 </div>
 
-<footer class="footer mt-auto py-3 bg-light">
-<div class="container">
-        <span class="text-muted">Copyright &copy;<script>document.write(new Date().getFullYear());</script> NatureNest</span>
-    </div>
-</footer>
-
-<script>
-    $(document).ready(function () {
-        $('.add-to-cart').click(function (e) {
-            e.preventDefault();
-
-            const productId = $(this).data('product_id');
-            const productName = $(this).data('product-name');
-            const price = $(this).data('price');
-
-            // Directly send the product details to the server
-            $.ajax({
-                url: 'addToCart.php',
-                type: 'POST',
-                data: {
-                    productId: productId,
-                    productName: productName,
-                    price: price,
-                    addToCart: true
-                },
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log(response);
-                    // Update the UI by changing the 'Add to Cart' button to 'Added to Cart'
-                    const button = $(`button[data-product_id="${productId}"]`);
-                    button.text('Added to Cart');
-                    button.removeClass('add-to-cart');
-                    button.addClass('added-to-cart');
-
-                    // Fetch the updated cart from the server
-                    fetchCart();
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error adding to cart:', error);
-                }
-            });
-        });
-
-        function fetchCart() {
-            $.ajax({
-                url: 'fetchCart.php',
-                type: 'GET',
-                success: function(response) {
-                    const cart = JSON.parse(response);
-                    // Update the 'Cart' navbar link with the number of items in the cart
-                    const cartLink = $('.navbar .cart-link');
-                    cartLink.text('Cart (' + cart.items.length + ')');
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching cart:', error);
-                }
-            });
-        }
-
-        // Update the 'Cart' navbar link with the number of items in the cart
-        const cartLink = $('.navbar .cart-link');
-        cartLink.text('Cart (0)');
-
-        // Fetch the initial cart
-        fetchCart();
-
-        // Add event listener for 'Added to Cart' buttons
-        $('.added-to-cart').click(function () {
-            const productId = $(this).data('product_id');
-
-            // Directly send the product details to the server
-            $.ajax({
-                url: 'removeFromCart.php',
-                type: 'POST',
-                data: {
-                    productId: productId,
-                    removeFromCart: true
-                },
-                success: function(response) {
-                    // Handle the response from the server
-                    console.log(response);
-                    // Update the UI by changing the 'Added to Cart' button to 'Add to Cart'
-                    const button = $(`button[data-product_id="${productId}"]`);
-                    button.text('Add to Cart');
-                    button.removeClass('added-to-cart');
-                    button.addClass('add-to-cart');
-
-                    // Fetch the updated cart from the server
-                    fetchCart();
-                },
-                error: function(xhr, status, error) {
-                    // Handle any errors
-                    console.error('Error removing from cart:', error);
-                }
-            });
-        });
-    });
-</script>
+<footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">NatureNest</h2>
+                        <p>Whether you're looking for a fresh, organic salad or a juicy, ripe fruit, NatureNest has got you covered. Our range of products is constantly expanding, thanks to our innovative farming techniques and our dedication to quality.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Menu</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="product.php" class="py-2 d-block">Shop</a></li>
+                            <li><a href="about.php" class="py-2 d-block">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-12 text-center">
+					<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
+				</div>
+			</div>
+			</div>
+			</footer>
 </body>
 </html>

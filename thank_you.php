@@ -18,7 +18,7 @@
     <script>
         // Redirect to index.html after 3 seconds
         setTimeout(function() {
-            window.location.href = "index.html";
+            window.location.href = "orders.php";
         }, 3000); // 3000 milliseconds = 3 seconds
     </script>
 </body>

@@ -27,7 +27,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">NatureNest</a>
+            <a class="navbar-brand" href="index.php">NatureNest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,10 +37,10 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                   <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
                   <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div> 
         </div>
@@ -53,8 +53,8 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                     <div class="row slider-text justify-content-center align-items-center">
                         <div class="col-md-12 ftco-animate text-center">
                             <h1 class="mb-2">Welcome to NatureNest</h1>
-                            <h2 class="subheading mb-4">Your Source for Fresh Organic Foods</h2>
-                            <p><a href="product-single.html" class="btn btn-primary">View Products</a></p>
+                            <h2 class="subheading mb-4" style="color:black;">Join us at NatureNest, where sustainability meets taste. Together, we can make a difference, one organic product at a time.</h2>
+                            <p><a href="product.php" class="btn btn-primary">View Products</a></p>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                 <div class="col-md-12 heading-section text-center ftco-animate">
                     <span class="subheading">Featured Products</span>
                     <h2 class="mb-4">Our Products</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                    <p>At NatureNest, we're not just selling products; we're selling a promise of a healthier, more sustainable future. Our products are grown with care, using only the purest water and the most natural fertilizers, ensuring that every bite you take is a step towards a healthier planet.</p>
                 </div>
             </div>   		
             <div class="row">
@@ -121,7 +121,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <p class="card-text">$120.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <p class="card-text">$120.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="products.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <p class="card-text">$120.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <p class="card-text">$120.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">NatureNest</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                        <p>Whether you're looking for a fresh, organic salad or a juicy, ripe fruit, NatureNest has got you covered. Our range of products is constantly expanding, thanks to our innovative farming techniques and our dedication to quality.</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -202,9 +202,8 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="shop.html" class="py-2 d-block">Shop</a></li>
-                            <li><a href="about.html" class="py-2 d-block">About</a></li>
-                            <li><a href="contact.html" class="py-2 d-block">Contact</a></li>
+                            <li><a href="product.php" class="py-2 d-block">Shop</a></li>
+                            <li><a href="about.php" class="py-2 d-block">About</a></li>
                         </ul>
                     </div>
                 </div>

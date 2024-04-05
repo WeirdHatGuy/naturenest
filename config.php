@@ -1,15 +1,22 @@
 <?php
-// Database configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'naturenest2');
+$host = 'localhost';
+$dbname = 'naturenest2';
+$user = 'root';
+$password = '';
 
-// Connect to the database
 try {
-    $conn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+    // Create a new PDO instance
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+
+    // Set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Set the PDO fetch mode to associative array
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    // Set the PDO charset to utf8mb4
+    $conn->exec("SET CHARACTER SET utf8mb4");
 } catch (PDOException $e) {
-    die('Connection failed: ' . $e->getMessage());
+    echo 'Error: ' . $e->getMessage();
 }
 ?>
