@@ -25,11 +25,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-=======
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
->>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
         <div class="container">
             <a class="navbar-brand" href="index.html">NatureNest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +33,6 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
                   <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="product-single.html">Products</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="cart.html">Cart</a></li>
@@ -45,18 +40,6 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                   <li class="nav-item"><a class="nav-link-special" href="about.html">About</a></li>
                 </ul>
             </div> 
-=======
-                  <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
-                </ul>
-              </div>
-              
->>>>>>> e0b900971b416343437a657404e45f7d81aa4d4b
         </div>
     </nav>
     <section id="home-section" class="hero">
