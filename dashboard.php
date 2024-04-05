@@ -31,6 +31,7 @@ $countries = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NatureNest</title>
     <meta charset="utf-8">
@@ -44,26 +45,26 @@ $countries = $stmt->fetchAll();
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">NatureNest</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-                <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">NatureNest</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container">
         <h1>Profile Information</h1>
@@ -137,20 +138,20 @@ $countries = $stmt->fetchAll();
         </div>
     </div>
     <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved <i class="fas fa-heart"></i> by
-              <a href="#" target="_blank">NatureNest</a>
-            </p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        All rights reserved <i class="fas fa-heart"></i> by
+                        <a href="#" target="_blank">NatureNest</a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

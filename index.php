@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 require_once 'header.php';
 
 // Check if the file name is not index.php
-if(basename($_SERVER['PHP_SELF']) != 'index.php') {
+if (basename($_SERVER['PHP_SELF']) != 'index.php') {
     // Redirect to login.php if session variables are not set
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
         header("Location: auth.php");
@@ -14,35 +14,38 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NatureNest</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">NatureNest</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                  <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
                 </ul>
-            </div> 
+            </div>
         </div>
     </nav>
     <section id="home-section" class="hero">
@@ -73,7 +76,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <h3 class="heading">Free Shipping</h3>
                             <span>On order over $100</span>
                         </div>
-                    </div>      
+                    </div>
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -84,7 +87,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <h3 class="heading">Always Fresh</h3>
                             <span>Product well package</span>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -95,7 +98,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                             <h3 class="heading">Superior Quality</h3>
                             <span>Quality Products</span>
                         </div>
-                    </div>      
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,7 +111,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                     <h2 class="mb-4">Our Products</h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
                 </div>
-            </div>   		
+            </div>
             <div class="row">
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
@@ -127,7 +130,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
                         <a href="#" class="img-prod">
@@ -145,7 +148,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
                         <a href="#" class="img-prod">
@@ -181,30 +184,30 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
     <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved <i class="fas fa-heart"></i> by
-              <a href="#" target="_blank">NatureNest</a>
-            </p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        All rights reserved <i class="fas fa-heart"></i> by
+                        <a href="#" target="_blank">NatureNest</a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
-			
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-			<script src="js/main.js"></script>
-			
-			</body>
-			</html>
-			
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
