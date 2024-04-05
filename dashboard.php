@@ -50,14 +50,13 @@ $countries = $stmt->fetchAll();
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="product-single.html">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-                <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link-special" href="product-single.php">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
                 <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link-special" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
             </ul>
         </div>
     </div>

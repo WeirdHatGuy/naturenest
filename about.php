@@ -3,7 +3,7 @@
 require_once 'header.php';
 
 // Check if the file name is not index.php
-if(basename($_SERVER['PHP_SELF']) != 'index.php') {
+if(basename($_SERVER['PHP_SELF']) != 'about.php') {
     // Redirect to login.php if session variables are not set
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
         header("Location: auth.php");
@@ -15,13 +15,10 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NatureNest</title>
+    <title>NatureNest - Organic Delights</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -47,14 +44,14 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
     </nav>
     <section id="home-section" class="hero">
         <div class="home-slider owl-carousel">
-            <div class="slider-items" style="background-image: url(images/bg_1.jpg);">
+            <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row slider-text justify-content-center align-items-center">
                         <div class="col-md-12 ftco-animate text-center">
-                            <h1 class="mb-2">Welcome to NatureNest</h1>
-                            <h2 class="subheading mb-4">Your Source for Fresh Organic Foods</h2>
-                            <p><a href="product-single.html" class="btn btn-primary">View Products</a></p>
+                            <h1 class="mb-2">Discover Organic Delights</h1>
+                            <h2 class="subheading mb-4">Explore the World of Fresh Organic Foods</h2>
+                            <p><a href="product-single.html" class="btn btn-primary">Shop Now</a></p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +68,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Free Shipping</h3>
-                            <span>On order over $100</span>
+                            <span>On orders over $100</span>
                         </div>
                     </div>      
                 </div>
@@ -82,7 +79,7 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Always Fresh</h3>
-                            <span>Product well package</span>
+                            <span>Product well packaged</span>
                         </div>
                     </div>    
                 </div>
@@ -105,59 +102,24 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
                     <span class="subheading">Featured Products</span>
-                    <h2 class="mb-4">Our Products</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                    <h2 class="mb-4">Our Organic Selection</h2>
+                    <p>Explore our curated selection of fresh, organic products.</p>
                 </div>
             </div>   		
             <div class="row">
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
                         <a href="#" class="img-prod">
-                            <img class="card-img-top" src="images/product-1.jpg" alt="Bell Pepper">
+                            <img class="card-img-top" src="images/product-2.jpg" alt="Organic Strawberries">
                             <div class="overlay"></div>
                         </a>
                         <div class="card-body text-center">
-                            <h5 class="card-title"><a href="#">Bell Pepper</a></h5>
-                            <p class="card-text">$120.00</p>
+                            <h5 class="card-title"><a href="#">Organic Strawberries</a></h5>
+                            <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
                                     <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="product card">
-                        <a href="#" class="img-prod">
-                            <img class="card-img-top" src="images/product-2.jpg" alt="Strawberries">
-                            <div class="overlay"></div>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><a href="#">Strawberries</a></h5>
-                            <p class="card-text">$120.00</p>
-                            <div class="bottom-area d-flex px-3">
-                                <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="product card">
-                        <a href="#" class="img-prod">
-                            <img class="card-img-top" src="images/product-3.jpg" alt="Beans">
-                            <div class="overlay"></div>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><a href="#">Beans</a></h5>
-                            <p class="card-text">$120.00</p>
-                            <div class="bottom-area d-flex px-3">
-                                <div class="m-auto d-flex">
-                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product-single.html" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
                         </div>
@@ -166,15 +128,52 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
                         <a href="#" class="img-prod">
-                            <img class="card-img-top" src="images/product-4.jpg" alt="Cabbage">
+                            <img class="card-img-top" src="images/product-5.jpg" alt="Organic Tomatoes">
                             <div class="overlay"></div>
                         </a>
                         <div class="card-body text-center">
-                            <h5 class="card-title"><a href="#">Cabbage</a></h5>
-                            <p class="card-text">$120.00</p>
+                            <h5 class="card-title"><a href="#">Organic Tomatoes</a></h5>
+                            <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
                                     <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product-single.html" class="btn btn-success buy-now mx-1">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="product card">
+                        <a href="#" class="img-prod">
+                            <img class="card-img-top" src="images/product-6.jpg" alt="Organic Broccoli">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><a href="#">Organic Broccoli</a></h5>
+                            <p class="card-text">$150.00</p>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product-single.html" class="btn btn-success buy-now mx-1">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="product card">
+                        <a href="#" class="img-prod">
+                            <img class="card-img-top" src="images/product-7.jpg" alt="Organic Carrots">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><a href="#">Organic Carrots</a></h5>
+                            <p class="card-text">$150.00</p>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="product-single.html" class="btn btn-primary add-to-cart">Add to Cart</a>
+                                    <a href="product-single.html" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
                         </div>
@@ -210,17 +209,18 @@ if(basename($_SERVER['PHP_SELF']) != 'index.php') {
                 </div>
             </div>
             <div class="row">
-				<div class="col-md-12 text-center">
-					<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
-				</div>
-			</div>
-			</div>
-			</footer>
-			
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-			<script src="js/main.js"></script>
-			
-			</body>
-			</html>
-			
+                <div class="col-md-12 text-center">
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>
+
