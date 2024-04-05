@@ -282,3 +282,6 @@ img {
     height: auto; /* Maintains image aspect ratio */
   }
   
+  .padding-15{
+    padding: 15px;
+}

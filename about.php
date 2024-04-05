@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 require_once 'header.php';
 
 // Check if the file name is not index.php
-if(basename($_SERVER['PHP_SELF']) != 'about.php') {
+if (basename($_SERVER['PHP_SELF']) != 'about.php') {
     // Redirect to login.php if session variables are not set
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
         header("Location: auth.php");
@@ -25,7 +25,8 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">NatureNest</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -39,8 +40,7 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                   <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
                   <li class="nav-item"><a class="nav-link-special" href="contact.php">Contact</a></li>
                 </ul>
-              </div>
-              
+            </div>
         </div>
     </nav>
     <section id="home-section" class="hero">
@@ -71,7 +71,7 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Free Shipping</h3>
                             <span>On orders over $100</span>
                         </div>
-                    </div>      
+                    </div>
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -82,7 +82,7 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Always Fresh</h3>
                             <span>Product well packaged</span>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="col-md-4 text-center d-flex align-self-stretch ftco-animate">
                     <div class="media block-6 services mb-md-0 mb-4">
@@ -93,7 +93,7 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <h3 class="heading">Superior Quality</h3>
                             <span>Quality Products</span>
                         </div>
-                    </div>      
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                     <h2 class="mb-4">Our Organic Selection</h2>
                     <p>Explore our curated selection of fresh, organic products.</p>
                 </div>
-            </div>   		
+            </div>
             <div class="row">
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product card">
@@ -181,7 +181,6 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
     <footer class="ftco-footer ftco-section">
@@ -211,17 +210,19 @@ if(basename($_SERVER['PHP_SELF']) != 'about.php') {
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a></p>
+                    <p>Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved <i
+                            class="fas fa-heart"></i> by <a href="#" target="_blank">NatureNest</a>
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
-    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    
-</body>
-</html>
 
+</body>
+
+</html>
