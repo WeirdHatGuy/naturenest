@@ -58,7 +58,7 @@
                 $addToCartBtn = '<button class="btn btn-primary added-to-cart" data-product_id="' . $product['product_id'] . '" data-product-name="' . $product['name'] . '" data-price="' . $product['price'] .'">Added to Cart</button>';
             }
 
-            echo '<div class="col-md-6 col-lg-3 ftco-animate">
+            echo '<div class="col-md-6 col-lg-3 ftco-animate padding-15">
                     <div class="product card">
                     <img src="images/product-' . $product['product_id'] . '.jpg" class="card-img-top" alt="' . $productName . '">
                         <div class="card-body text-center">
