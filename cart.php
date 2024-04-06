@@ -89,16 +89,16 @@ error_reporting(E_ALL);
                         <img src="<?php echo $item['product_image']; ?>" alt="<?php echo $item['name']; ?>" width="100">
                         <?php echo $item['name']; ?>
                     </td>
+                    <td>₹<?php echo $item['price']; ?></td>
                     <td><?php echo $item['qty']; ?></td>
-                    <td>$<?php echo $item['price']; ?></td>
-                    <td>$<?php echo $itemTotal; ?></td>
+                    <td>₹<?php echo $itemTotal; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
         <tfoot>
                 <tr>
                     <th colspan="3">Total</th>
-                    <th>$<?php echo $totalPrice; ?></th>
+                    <th>₹<?php echo $totalPrice; ?></th>
                 </tr>
         </tfoot>
     </table>

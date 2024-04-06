@@ -1,18 +1,7 @@
 <?php
 // add_address.php
 
-// Database connection
-$server = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'naturenest2';
-
-try {
-    $conn = new PDO("mysql:host=$server;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: ". $e->getMessage();
-}
+require 'header.php';
 
 // Add address
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,14 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query->bindParam(':code', $code);
     $query->bindParam(':country', $country);
 
-    $unit = $_POST['unit'];
-    $street = $_POST['street'];
-    $line1 = $_POST['line1'];
-    $line2 = $_POST['line2'];
+    $unit = $_POST['unit_number'];
+    $street = $_POST['street_number'];
+    $line1 = $_POST['address_line1'];
+    $line2 = $_POST['address_line2'];
     $city = $_POST['city'];
     $region = $_POST['region'];
-    $code = $_POST['code'];
+    $code = $_POST['postal_code'];
     $country = $_POST['country'];
+
 
     $query->execute();
 
@@ -49,5 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $default = 1;
 
     $query->execute();
+    header('Location: dashboard.php');
 }
 ?>
