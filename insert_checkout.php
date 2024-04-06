@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
      // Fetch the selected shipping method ID
      $shippingMethod = $_POST['shipping_method'];
-     $sql = "SELECT id FROM shipping_method WHERE name = :shipping_method";
+     $sql = "SELECT id FROM shipping_method WHERE id = :shipping_method";
      $stmt = $conn->prepare($sql);
      $stmt->bindParam(':shipping_method', $shippingMethod);
      $stmt->execute();

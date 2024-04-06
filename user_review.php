@@ -9,6 +9,30 @@ if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
         exit();
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Sanitize input
+    $order_id = htmlspecialchars($_POST['order_id']);
+    $product_item_id = htmlspecialchars($_POST['product_item_id']);
+    $rating_value = htmlspecialchars($_POST['rating_value']);
+    $comment = htmlspecialchars($_POST['comment']);
+
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("INSERT INTO user_review (user_id, ordered_product_id, rating_value, comment) VALUES (:user_id, :ordered_product_id, :rating_value, :comment)");
+
+    // Bind parameters
+    $stmt->bindParam(':user_id', $_SESSION['user_id']);
+    $stmt->bindParam(':ordered_product_id', $product_item_id);
+    $stmt->bindParam(':rating_value', $rating_value);
+    $stmt->bindParam(':comment', $comment);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Review submitted successfully!";
+    } else {
+        echo "Error submitting review.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
