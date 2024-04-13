@@ -6,19 +6,6 @@ body {
     padding: 0;
 }
 
-/* Navigation Link Styles (About, Products, Contact) */
-.nav-link-special {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 16px;
-    padding: 10px 15px;
-}
-
-.nav-link-special:hover {
-    color: #fff;
-}
-
 .height{
     height: 80vh !important;
 }
@@ -28,7 +15,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #4CAF50;
     padding: 10px 0;
 }
 
@@ -70,16 +57,8 @@ body {
     font-weight: bold;
 }
 
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
 nav ul {
-    background-color: #333;
+    background-color: #4CAF50;
     list-style-type: none;
     margin:  0;
     padding:  0;

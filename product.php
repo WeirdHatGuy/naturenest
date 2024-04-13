@@ -37,18 +37,37 @@ if (isset($_POST["add_to_cart"])) {
     // Get the product quantity from the form 
     $product_quantity = $_POST["quantity"]; 
 
-    // Insert the item into the shopping cart item table
-    $sql = "INSERT INTO shopping_cart_item (cart_id, product_item_id, qty) VALUES (:cart_id, :product_item_id, :qty)";
+    // Check if the item already exists in the cart
+    $sql = "SELECT id, qty FROM shopping_cart_item WHERE cart_id = :cart_id AND product_item_id = :product_item_id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':cart_id', $cartId);
     $stmt->bindParam(':product_item_id', $product_item_id);
-    $stmt->bindParam(':qty', $product_quantity);
     $stmt->execute();
+    $existingItem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($existingItem) {
+        // If the item exists, increment its quantity
+        $newQuantity = $existingItem['qty'] + $product_quantity;
+        $sql = "UPDATE shopping_cart_item SET qty = :new_quantity WHERE id = :item_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':new_quantity', $newQuantity);
+        $stmt->bindParam(':item_id', $existingItem['id']);
+        $stmt->execute();
+    } else {
+        // If the item does not exist, add it to the cart
+        $sql = "INSERT INTO shopping_cart_item (cart_id, product_item_id, qty) VALUES (:cart_id, :product_item_id, :qty)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':cart_id', $cartId);
+        $stmt->bindParam(':product_item_id', $product_item_id);
+        $stmt->bindParam(':qty', $product_quantity);
+        $stmt->execute();
+    }
 
     // Redirect to the cart page
     header("Location: cart.php");
     exit();
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -69,16 +88,13 @@ if (isset($_POST["add_to_cart"])) {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class=navbar>
     <a class="navbar-brand" href="index.php">NatureNest</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+    <div id="navbar">
+        <ul class="navbar">
         <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="product.php">Products</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
                   <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
                   <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>

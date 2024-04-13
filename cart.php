@@ -9,7 +9,43 @@ if(basename($_SERVER['PHP_SELF'])!= 'cart.php') {
     }
 }
 
-// Get the user's cart
+
+
+// Check if the delete button was clicked for an item
+if (isset($_POST['delete_item'])) {
+    $itemId = $_POST['item_id'];
+
+    // Fetch the item from the cart
+    $sql = "SELECT * FROM shopping_cart_item WHERE id = :item_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':item_id', $itemId);
+    $stmt->execute();
+    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Check if the item exists
+    if ($item) {
+        // Decrement the item's quantity
+        $newQuantity = $item['qty'] - 1;
+        if ($newQuantity > 0) {
+            $sql = "UPDATE shopping_cart_item SET qty = :new_quantity WHERE id = :item_id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':new_quantity', $newQuantity);
+            $stmt->bindParam(':item_id', $itemId);
+            $stmt->execute();
+        } else {
+            // If the quantity is 0, delete the item from the cart
+            $sql = "DELETE FROM shopping_cart_item WHERE id = :item_id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':item_id', $itemId);
+            $stmt->execute();
+        }
+    }
+
+    // Redirect back to the cart page to refresh the cart
+    header("Location: cart.php");
+    exit();
+}
+
 $sql = "SELECT sci.id, sci.product_item_id, sci.qty, pi.price, pi.product_image, p.name
         FROM shopping_cart_item sci
         JOIN shopping_cart sc ON sci.cart_id = sc.id
@@ -21,14 +57,12 @@ $stmt->bindParam(':user_id', $_SESSION['user_id']);
 $stmt->execute();
 $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Calculate the total price
+// Recalculate the total price
 $totalPrice = 0;
 foreach ($cartItems as $item) {
     $totalPrice += $item['price'] * $item['qty'];
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 ?>
 
 <!DOCTYPE html>
@@ -48,23 +82,18 @@ error_reporting(E_ALL);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class=navbar>
     <a class="navbar-brand" href="index.php">NatureNest</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="about.php">About</a></li>
-                  <li class="nav-item"><a class="nav-link-special" href="product.php">Products</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
-                  <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+        <ul class="navbar">
+            <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="product.php">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="cart.php">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+            <li class="nav-item"><a class="nav-link" href="user_review.php">User Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
         </ul>
-    </div>
 </nav>
 
 <div class="container">
@@ -82,7 +111,6 @@ error_reporting(E_ALL);
             <?php foreach ($cartItems as $item): ?>
                 <?php
                 $itemTotal = $item['price'] * $item['qty'];
-                $totalPrice += $itemTotal;
                 ?>
                 <tr>
                     <td>
@@ -92,6 +120,12 @@ error_reporting(E_ALL);
                     <td>₹<?php echo $item['price']; ?></td>
                     <td><?php echo $item['qty']; ?></td>
                     <td>₹<?php echo $itemTotal; ?></td>
+                    <td>
+                        <form action="cart.php" method="post">
+                            <input type="hidden" name="item_id" value="<?php echo $item['id']; ?>">
+                            <input type="submit" name="delete_item" value="Delete">
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
