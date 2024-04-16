@@ -16,7 +16,7 @@ $userId = $_SESSION['user_id'];
 $sql = "SELECT a.unit_number, a.street_number, a.address_line1, a.address_line2, a.city, a.region, a.postal_code, a.country_id
         FROM user_address ua
         JOIN address a ON ua.address_id = a.id
-        WHERE ua.user_id = :user_id AND ua.is_default = 1";
+        WHERE ua.user_id = :user_id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $userId);
 $stmt->execute();
