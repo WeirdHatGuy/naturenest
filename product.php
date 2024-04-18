@@ -1,3 +1,9 @@
+<?php if (isset($_GET['error'])): ?>
+    <div class="alert alert-danger" role="alert">
+        <?php echo htmlspecialchars($_GET['error']); ?>
+    </div>
+<?php endif; ?>
+
 <?php
 
 require_once 'header.php';
@@ -37,6 +43,13 @@ if (isset($_POST["add_to_cart"])) {
     // Get the product quantity from the form 
     $product_quantity = $_POST["quantity"]; 
 
+    // Validate the quantity
+    if (!isset($product_quantity) || $product_quantity <= 0) {
+        // Redirect back to the product page with an error message
+        header("Location: product.php?error=Provide quantity.");
+        exit();
+    }
+
     // Check if the item already exists in the cart
     $sql = "SELECT id, qty FROM shopping_cart_item WHERE cart_id = :cart_id AND product_item_id = :product_item_id";
     $stmt = $conn->prepare($sql);
@@ -44,6 +57,7 @@ if (isset($_POST["add_to_cart"])) {
     $stmt->bindParam(':product_item_id', $product_item_id);
     $stmt->execute();
     $existingItem = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
     if ($existingItem) {
         // If the item exists, increment its quantity
@@ -77,14 +91,13 @@ if (isset($_POST["add_to_cart"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>NatureNest</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>

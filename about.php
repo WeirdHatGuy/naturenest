@@ -18,7 +18,7 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
     <title>NatureNest - Organic Delights</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -119,7 +119,6 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                     <a href="product.php" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
@@ -137,7 +136,6 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                     <a href="product.php" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
@@ -155,7 +153,6 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                     <a href="product.php" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
@@ -173,7 +170,6 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                             <p class="card-text">$150.00</p>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="product.php" class="btn btn-primary add-to-cart">Add to Cart</a>
                                     <a href="product.php" class="btn btn-success buy-now mx-1">Buy Now</a>
                                 </div>
                             </div>
@@ -219,7 +215,6 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 
 </body>

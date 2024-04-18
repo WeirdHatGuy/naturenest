@@ -7,10 +7,9 @@ $query->execute();
 
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     echo '<tr>';
-    echo '<td>' . $row['address_line1'] . ', ' . $row['address_line2'] . ', ' . $row['city'] . ', ' . $row['region'] . ', ' . $row['postal_code'] .'</td>';
+    echo '<td>' . $row['address_line1'] . ', ' . $row['address_line2'] . ', ' . $row['city'] . ', ' . $row['region'] . ', ' . $row['postal_code'] .' '.'</td>';
     echo '<td>';
-    echo '<a href="#" class="btn btn-primary btn-sm">Edit</a> ';
-    echo '<a href="#" class="btn btn-danger btn-sm">Delete</a>';
+    echo '<button class="btn btn-danger btn-sm">Delete</button>';
     echo '</td>';
     echo '</tr><br>';
 }
