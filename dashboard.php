@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var providerInput = document.getElementById('provider');
     var accountNumberInput = document.getElementById('account_number');
     var expiryDateInput = document.getElementById('expiry_date');
+    var paymentMethodForm = document.getElementById('paymentMethodForm');
 
     // Function to update form fields based on payment type
     function updateFormFields() {
@@ -184,12 +185,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to validate form fields before submission
+    function validateForm() {
+        var selectedPaymentType = paymentTypeSelect.value;
+        if (selectedPaymentType !== '1' && (providerInput.value === '' || accountNumberInput.value === '' || expiryDateInput.value === '')) {
+            alert('Please fill in all required fields.');
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+
     // Listen for changes to the payment type select field
     paymentTypeSelect.addEventListener('change', updateFormFields);
+
+    // Listen for form submission
+    paymentMethodForm.addEventListener('submit', function(event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
 
     // Call the function initially to set the correct state
     updateFormFields();
 });
+
 </script>
 
 <footer class="ftco-footer ftco-section">
