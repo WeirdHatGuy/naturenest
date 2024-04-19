@@ -1,38 +1,62 @@
 <?php 
 require_once 'header.php';
 
-// Check if the file name is not index.php
-if(basename($_SERVER['PHP_SELF'])!= 'user_review.php') { //appropriate file name
-    // Redirect to login.php if session variables are not set
-    if (!isset($_SESSION['user_id']) ||!isset($_SESSION['user_name'])) {
+if(basename($_SERVER['PHP_SELF']) != 'user_review.php') {
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
         header("Location: auth.php");
         exit();
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Sanitize input
-    $order_id = htmlspecialchars($_POST['order_id']);
-    $product_item_id = htmlspecialchars($_POST['product_item_id']);
+    $userId = $_SESSION['user_id'];
+    $orderLineId = $_POST['order_line_id']; // Use the selected order line ID
+
+    // Fetch the product item ID from the selected order line
+    $sql = "SELECT product_item_id FROM order_line WHERE id = :order_line_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':order_line_id', $orderLineId);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $productItemId = $result['product_item_id']; // Get the product item ID
+
+    // The rest of your code remains the same...
     $rating_value = htmlspecialchars($_POST['rating_value']);
     $comment = htmlspecialchars($_POST['comment']);
 
-    // Prepare the SQL statement
     $stmt = $conn->prepare("INSERT INTO user_review (user_id, ordered_product_id, rating_value, comment) VALUES (:user_id, :ordered_product_id, :rating_value, :comment)");
 
-    // Bind parameters
-    $stmt->bindParam(':user_id', $_SESSION['user_id']);
-    $stmt->bindParam(':ordered_product_id', $product_item_id);
+    $stmt->bindParam(':user_id', $userId);
+    $stmt->bindParam(':ordered_product_id', $productItemId);
     $stmt->bindParam(':rating_value', $rating_value);
     $stmt->bindParam(':comment', $comment);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Review submitted successfully!";
-    } else {
-        echo "Error submitting review.";
+    try {
+        if ($stmt->execute()) {
+            echo "Review submitted successfully!";
+        } else {
+            echo "Error submitting review.";
+        }
+    } catch (PDOException $e) {
+        echo "Database error: " . $e->getMessage();
     }
+
 }
+?>
+<?php
+// Fetch recent orders for the current user
+$sql = "SELECT ol.id AS order_line_id, pi.product_id, p.name AS product_name, so.order_date
+        FROM shop_order so
+        JOIN order_line ol ON so.id = ol.order_id
+        JOIN product_item pi ON ol.product_item_id = pi.id
+        JOIN product p ON pi.product_id = p.id
+        WHERE so.user_id = :user_id AND so.order_status = 4
+        ORDER BY so.order_date DESC";
+
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':user_id', $_SESSION['user_id']);
+$stmt->execute();
+$recentOrders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<td>Rating: " . htmlspecialchars($row['rating_value']) . "</td><br>";
             echo "<td>Comment: " . htmlspecialchars($row['comment']) . "</td><br>";
             echo "<td>Product: " . htmlspecialchars($row['product_name']) . "</td><br>";
-            echo "</tr>";
+            echo "</tr><br>";
         }
 
         // Close the database connection
@@ -102,12 +126,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Leave a Review</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div class="form-group">
-                <label for="order_id">Order ID</label>
-                <input type="text" class="form-control" id="order_id" name="order_id" required>
-            </div>
-            <div class="form-group">
-                <label for="product_item_id">Product Item ID</label>
-                <input type="text" class="form-control" id="product_item_id" name="product_item_id" required>
+                <label for="order_line_id">Select a Recent Order</label>
+                <select class="form-control" id="order_line_id" name="order_line_id" required>
+                    <?php foreach ($recentOrders as $order): ?>
+                        <option value="<?php echo htmlspecialchars($order['order_line_id']); ?>">
+                            <?php echo htmlspecialchars($order['product_name']) . ' - Order Date: ' . htmlspecialchars($order['order_date']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="rating_value">Rating (1-5)</label>
@@ -120,6 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary">Submit Review</button>
         </form>
     </div>
+
     <footer class="ftco-footer ftco-section">
         <div class="container">
             <div class="row mb-5">

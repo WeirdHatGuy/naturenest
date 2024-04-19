@@ -9,7 +9,17 @@ if(basename($_SERVER['PHP_SELF'])!= 'cart.php') {
     }
 }
 
+// Check if the cart should be emptied
+if (isset($_SESSION['cart_emptied']) && $_SESSION['cart_emptied'] === true) {
+    // Empty the cart for the current user
+    $sql = "DELETE FROM shopping_cart_item WHERE cart_id = (SELECT id FROM shopping_cart WHERE user_id = :user_id)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $_SESSION['user_id']);
+    $stmt->execute();
 
+    // Unset the cart_emptied session variable
+    unset($_SESSION['cart_emptied']);
+}
 
 // Check if the delete button was clicked for an item
 if (isset($_POST['delete_item'])) {

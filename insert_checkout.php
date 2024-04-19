@@ -19,13 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
      // Fetch the user's default address ID
-     $userId = $_SESSION['user_id'];
-     $sql = "SELECT address_id FROM user_address WHERE user_id = :user_id AND is_default = 1";
-     $stmt = $conn->prepare($sql);
-     $stmt->bindParam(':user_id', $userId);
-     $stmt->execute();
-     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-     $defaultAddressId = $result['address_id'];
+    $userId = $_SESSION['user_id'];
+    $sql = "SELECT address_id FROM user_address WHERE user_id = :user_id ORDER BY created_at DESC LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $userId);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $defaultAddressId = $result['address_id'];
+
  
      // Fetch the selected shipping method ID
      $shippingMethod = $_POST['shipping_method'];
@@ -75,6 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':price', $row['price']);
             $stmt->execute();
         }
+
+        // Set the cart_emptied session variable to true
+        $_SESSION['cart_emptied'] = true;
 
         header("Location: thank_you.php?order_id=$orderId");
         exit();
