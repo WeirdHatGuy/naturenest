@@ -29,14 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $address_id = $conn->lastInsertId();
 
-    $query = $conn->prepare('INSERT INTO user_address (user_id, address_id, is_default) VALUES (:user, :address, :default)');
+    $query = $conn->prepare('INSERT INTO user_address (user_id, address_id) VALUES (:user, :address)');
     $query->bindParam(':user', $user);
     $query->bindParam(':address', $address);
-    $query->bindParam(':default', $default);
 
     $user = $_SESSION['user_id'];
     $address = $address_id;
-    $default = 1;
 
     $query->execute();
     header('Location: dashboard.php');

@@ -155,10 +155,6 @@ $countries = $stmt->fetchAll();
             <label for="expiry_date">Expiry Date</label>
             <input type="date" class="form-control" id="expiry_date" name="expiry_date">
         </div>
-        <div class="form-group">
-            <label for="is_default">Set as Default</label>
-            <input type="checkbox" id="is_default" name="is_default" value="1">
-        </div>
         <button type="submit" class="btn btn-primary">Add Payment Method</button>
     </form>
 </div>
@@ -210,6 +206,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Target only forms with the 'delete-address-form' class
+    var forms = document.querySelectorAll('.delete-address-form');
+    forms.forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            if (!confirm('Are you sure you want to delete this address?')) {
+                event.preventDefault();
+            }
+        });
+    });
+});
+</script>
+
 
 <footer class="ftco-footer ftco-section">
         <div class="container">
