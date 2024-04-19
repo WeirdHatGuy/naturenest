@@ -47,8 +47,8 @@ if (basename($_SERVER['PHP_SELF']) != 'about.php') {
                 <div class="container">
                     <div class="row slider-text justify-content-center align-items-center">
                         <div class="col-md-12 ftco-animate text-center">
-                            <h1 class="mb-2">Discover Organic Delights</h1>
-                            <h2 class="subheading mb-4">Explore the World of Fresh Organic Foods</h2>
+                            <h1 class="mb-2"style='color:#FFFFFF;text-shadow: 2px 2px 4px #808080;'>Discover Organic Delights</h1>
+                            <h2 class="subheading mb-4" style="color:#FFFFFF;text-shadow: 2px 2px 4px #808080;">Explore the World of Fresh Organic Foods</h2>
                             <p><a href="product.php" class="btn btn-primary">Shop Now</a></p>
                         </div>
                     </div>

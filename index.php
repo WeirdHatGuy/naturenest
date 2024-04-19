@@ -49,8 +49,8 @@ if (basename($_SERVER['PHP_SELF']) != 'index.php') {
                 <div class="container">
                     <div class="row slider-text justify-content-center align-items-center">
                         <div class="col-md-12 ftco-animate text-center">
-                            <h1 class="mb-2">Welcome to NatureNest</h1>
-                            <h2 class="subheading mb-4" style="color:black;">Join us at NatureNest, where sustainability meets taste. Together, we can make a difference, one organic product at a time.</h2>
+                            <h1 class="mb-2" style="color: black; text-shadow: 2px 2px 4px #808080;">Welcome to NatureNest</h1>
+                            <h2 class="subheading mb-4" style="color:#FFFFFF;text-shadow: 2px 2px 4px #808080;">Join us at NatureNest, where sustainability meets taste. Together, we can make a difference, one organic product at a time.</h2>
                             <p><a href="product.php" class="btn btn-primary">View Products</a></p>
                         </div>
                     </div>
